@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Меню{% endblock %}</title>
+</head>
+<body>
+<header>
+    <nav>
+        {% load menu_tags %}
+        {% draw_menu 'main_menu' %}
+        {% draw_menu 'test_menu' %}
+    </nav>
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    {% if request.path != '/' %}
+    <a href="{% url 'menu:index' %}">Вернуться на главную</a>
+    {% endif %}
+</footer>
+</body>
+</html>
